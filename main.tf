@@ -42,6 +42,14 @@ resource "aws_security_group" "web-sg" {
   }
 }   
 
+data "aws_ami" "my_ami" {
+  most_recent = true
+  owners = ["amazon"]
+  filter {
+    name = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
 resource "aws_instance" "web_app" {
   count = 4
   ami  = data.aws_ami.my_ami.id
