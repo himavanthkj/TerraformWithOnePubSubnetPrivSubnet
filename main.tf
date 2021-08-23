@@ -21,7 +21,6 @@ resource "aws_subnet" "public_subnet" {
 
 resource "aws_security_group" "web_sg" {
   vpc_id = aws_vpc.web_vpc.id
-<<<<<<< HEAD
   ingress
       {
           description = "TLS from VPC"
@@ -39,24 +38,6 @@ resource "aws_security_group" "web_sg" {
       }
     tags = {
       Name = "allow_tls"
-=======
-  ingress {
-    description = "TLS from VPC"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = [aws_vpc.web_vpc.cidr_block]
-  }
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  tags = {
-    Name = "allow_tls"
->>>>>>> a7c1f542a7128894a0ae96ca414506333ef465a0
-  }
 }
 
 data "aws_ami" "my_ami" {
