@@ -20,7 +20,7 @@ resource "aws_subnet" "public_subnet" {
 
 resource "aws_security_group" "web-sg" {
   vpc_id = aws_vpc.web_vpc.id
-  ingress = [
+  ingress
       {
           description = "TLS from VPC"
           from_port = 80
@@ -28,15 +28,13 @@ resource "aws_security_group" "web-sg" {
           protocol = "tcp"
           cidr_blocks = [aws_vpc.web_vpc.cidr_block]
       }
-  ]    
-  egress = [
+  egress
       {
           from_port = 0
           to_port = 0
           protocol = "-1"
           cidr_blocks = ["0.0.0.0"]
       }
-  ]
     tags = {
       Name = "allow_tls"
   }
