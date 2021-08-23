@@ -2,6 +2,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
+#Getting azs
 data "aws_availability_zones" "azs" {
   state = "available"
 }
